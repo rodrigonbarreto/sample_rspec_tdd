@@ -1,4 +1,4 @@
-# README
+# Training test only with ruby and Rspec
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+ruby -v = ruby 2.4.1p111
+
+to run all tests run only: rspec
