@@ -2,39 +2,47 @@ require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
   #you can use too fixtures :all
-  it '#full_name - overrite Atributo' do
-    cust = create(:customer)
-    expect(cust.full_name).to start_with("Sr.")
-  end
-  it '#full_name witsh alias :user' do
-    customer = create(:user)
-    expect(customer.full_name).to start_with("Sr. ")
-  end
-    
-  it '#full_name - overwrite Atribut' do
+  it '#full_name - Sobrescrevendo Atributo' do
     customer = create(:customer, name: "Jackson Pires" )
+    customer1 = create(:customer, name: "Jackson Pires" )
     expect(customer.full_name).to eq("Sr. Jackson Pires")
   end
 
-  it 'customer vip' do
-    customer = create(:vip)
+  it 'Heritage' do
+    customer = create(:customer_vip)
     expect(customer.vip).to eq(true)
   end
 
-  it 'customer not vip' do
-    customer = create(:default)
-    expect(customer.vip).to eq(false)
+  it '#full_name' do
+    customer = create(:user) # ou create(:customer)
+    expect(customer.full_name).to start_with("Sr. ")
   end
 
-  it 'Using attributes_for' do
+  it 'Using  attributes_for' do
     attrs = attributes_for(:customer)
     customer = Customer.create(attrs)
     expect(customer.full_name).to start_with("Sr. ")
   end
 
   it 'Transient Attribute' do
-    customer = create(:default, upcased: true)
+    customer = create(:customer_default, upcased: true)
     expect(customer.name.upcase).to eq(customer.name)
+  end
+
+  it 'Client Female' do
+    customer = create(:customer_female)
+    expect(customer.gender).to eq('F')
+  end
+
+  it 'Client Female Default' do
+    customer = create(:customer_female_default)
+    expect(customer.gender).to eq('F')
+  end
+
+  it 'Cliente Male Vip' do
+    customer = create(:customer_male_vip)
+    expect(customer.gender).to eq('M')
+    expect(customer.vip).to eq(true)
   end
 
   it '#creat and all.size' do 
