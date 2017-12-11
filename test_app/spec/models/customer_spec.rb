@@ -32,6 +32,11 @@ RSpec.describe Customer, type: :model do
     expect(customer.full_name).to start_with("Sr. ")
   end
 
+  it 'Transient Attribute' do
+    customer = create(:default, upcased: true)
+    expect(customer.name.upcase).to eq(customer.name)
+  end
+
   it '#creat and all.size' do 
    expect{ create(:customer) }.to change{Customer.all.size}.by(1) 
   end
