@@ -48,4 +48,11 @@ RSpec.describe Customer, type: :model do
   it '#creat and all.size' do 
    expect{ create(:customer) }.to change{Customer.all.size}.by(1) 
   end
+
+  it 'travel_to' do
+    travel_to Time.zone.local(2004, 11, 23, 01, 04, 44) do
+      @customer = create(:customer_vip)
+    end
+    expect(@customer.created_at).to be < Time.now
+  end
 end
