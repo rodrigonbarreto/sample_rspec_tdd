@@ -27,3 +27,5 @@ Things you may want to cover:
 ruby -v = ruby 2.4.1p111 - Rails 5.1.4
 
 to run all tests run only: rspec
+
+ex: rspec spec/models/

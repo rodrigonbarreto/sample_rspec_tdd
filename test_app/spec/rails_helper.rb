@@ -32,7 +32,18 @@ RSpec.configure do |config|
   config.before(:suite) do
     FactoryBot.lint
   end
-    
+
+  # Shoulda Matchers
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      # Choose a test framework:
+      with.test_framework :rspec
+      with.library :active_model
+      # Or, choose the following (which implies all of the above):
+      with.library :rails
+    end
+  end
+
   config.include FactoryBot::Syntax::Methods
   config.include ActiveSupport::Testing::TimeHelpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
