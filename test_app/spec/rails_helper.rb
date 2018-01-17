@@ -27,7 +27,13 @@ require 'rspec/rails'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  
+
+  # For Devise >= 4.1.0
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+
+  #test with Capybara
+  config.include Warden::Test::Helpers
+
   #FactoryBot Lint
   config.before(:suite) do
     FactoryBot.lint

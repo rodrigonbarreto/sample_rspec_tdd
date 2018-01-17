@@ -12,6 +12,8 @@ gem 'rails', '~> 5.1.0'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+# devise
+gem 'devise'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,6 +47,11 @@ group :development, :test do
   gem 'webmock'
   gem 'vcr'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'rails-controller-testing'
+
+  #selenium
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :development do
